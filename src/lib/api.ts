@@ -22,24 +22,34 @@ api.interceptors.response.use(
 export interface Program {
   id: string;
   name: string;
-  acronym: string;
-  type: ProgramType;
+  sigle: string;
+  programType: ProgramType;
+  programLevels?: ProgramLevel[];
   levels?: Level[];
   createdAt: string;
-  updatedAt: string;
 }
 
+export interface ProgramLevel {
+  programId: string;
+  level: LevelOfProgram;
+}
+
+export interface LevelOfProgram {
+  id: string;
+  name: string;
+}
 export interface ProgramType {
   id: string;
   name: string;
+  description: string;
 }
 
 export interface Level {
   id: string;
   name: string;
-  acronym: string;
+  sigle: string;
   index: number;
-  programs?: Program[];
+  programs?: ProgramType[];
   updatedAt: string;
   createdAt: string;
 }

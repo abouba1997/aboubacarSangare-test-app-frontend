@@ -9,7 +9,8 @@ export default function Home() {
       <div>
         <h1 className="text-3xl font-bold tracking-tight">Tableau de bord</h1>
         <p className="text-muted-foreground">
-          Bienvenue dans l&apos;interface d&apos;administration académique
+          Bienvenue dans l&apos;interface d&apos;administration académique de
+          Sup&apos;Management
         </p>
       </div>
 

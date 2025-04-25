@@ -40,22 +40,22 @@ export function ProgramDialog({
 }: ProgramDialogProps) {
   const [formData, setFormData] = useState<Partial<Program>>({
     name: "",
-    acronym: "",
-    type: undefined,
+    sigle: "",
+    programType: undefined,
   });
 
   useEffect(() => {
     if (program) {
       setFormData({
         name: program.name,
-        acronym: program.acronym,
-        type: program.type,
+        sigle: program.sigle,
+        programType: program.programType,
       });
     } else {
       setFormData({
         name: "",
-        acronym: "",
-        type: undefined,
+        sigle: "",
+        programType: undefined,
       });
     }
   }, [program]);
@@ -68,15 +68,17 @@ export function ProgramDialog({
   };
 
   const handleTypeChange = (typeId: string) => {
+    console.log(programTypes);
     const selectedType = programTypes.find((type) => type.id === typeId);
     setFormData((prev) => ({
       ...prev,
-      type: selectedType,
+      programTypeId: selectedType?.id,
     }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    console.log(formData);
     onSave(formData);
   };
 
@@ -106,23 +108,23 @@ export function ProgramDialog({
               />
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="acronym" className="text-right">
+              <Label htmlFor="sigle" className="text-right">
                 Sigle
               </Label>
               <Input
-                id="acronym"
-                value={formData.acronym}
-                onChange={(e) => handleChange("acronym", e.target.value)}
+                id="sigle"
+                value={formData.sigle}
+                onChange={(e) => handleChange("sigle", e.target.value)}
                 className="col-span-3"
                 required
               />
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="type" className="text-right">
+              <Label htmlFor="programType" className="text-right">
                 Type
               </Label>
               <Select
-                value={formData.type?.id}
+                value={formData.programType?.id}
                 onValueChange={handleTypeChange}
                 required
               >

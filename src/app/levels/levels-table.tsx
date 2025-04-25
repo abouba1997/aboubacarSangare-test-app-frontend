@@ -59,11 +59,11 @@ export function LevelsTable({
       ),
     },
     {
-      accessorKey: "acronym",
+      accessorKey: "sigle",
       header: "Sigle",
     },
     {
-      accessorKey: "index",
+      accessorKey: "id",
       header: "Index",
     },
     {
@@ -76,7 +76,7 @@ export function LevelsTable({
             {programs.length > 0 ? (
               programs.map((program) => (
                 <Badge key={program.id} variant="outline">
-                  {program.acronym}
+                  {program.name}
                 </Badge>
               ))
             ) : (

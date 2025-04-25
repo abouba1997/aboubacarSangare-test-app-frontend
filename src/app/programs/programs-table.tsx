@@ -59,28 +59,28 @@ export function ProgramsTable({
       ),
     },
     {
-      accessorKey: "acronym",
+      accessorKey: "sigle",
       header: "Sigle",
     },
     {
       accessorKey: "type",
       header: "Type",
       cell: ({ row }) => {
-        const type = row.original.type;
-        return type ? type.name : "N/A";
+        const type = row.original.programType.name;
+        return type ? type : "N/A";
       },
     },
     {
       accessorKey: "levels",
       header: "Niveaux associés",
       cell: ({ row }) => {
-        const levels = row.original.levels || [];
+        const levels = row.original.programLevels || [];
         return (
           <div className="flex flex-wrap gap-1">
             {levels.length > 0 ? (
               levels.map((level) => (
-                <Badge key={level.id} variant="outline">
-                  {level.acronym}
+                <Badge key={level.level.id} variant="outline">
+                  {level.level.name}
                 </Badge>
               ))
             ) : (

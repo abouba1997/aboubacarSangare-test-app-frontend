@@ -90,6 +90,7 @@ export default function ProgramsPage() {
       } else {
         // Création
         const response = await programsApi.create(data);
+        console.log(data);
         setPrograms([...programs, response.data]);
         toast({
           title: "Succès",
@@ -97,8 +98,8 @@ export default function ProgramsPage() {
         });
       }
       setDialogOpen(false);
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
+      console.log(error);
       toast({
         title: "Erreur",
         description: "Impossible de sauvegarder le programme",
